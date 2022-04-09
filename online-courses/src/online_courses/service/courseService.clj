@@ -10,14 +10,9 @@
   (->> (db/select Course)
        ok))
 
-(defn course->response [course]
-  (if course
-    (ok course)
-    (not-found)))
-
 (defn get-course [course-id]
   (-> (Course course-id)
-      course->response))
+      ok))
 
 (defn post-course [add-course]
   (->> (db/insert! Course add-course)
