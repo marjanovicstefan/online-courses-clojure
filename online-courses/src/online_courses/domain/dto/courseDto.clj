@@ -10,6 +10,6 @@
                              :numberOfExcercises    schema/Int
                              :accessOnMobileAndTv   schema/Bool
                              :certificate           schema/Bool
-                             :review                schema/Num
+                             :review                schema/Str
                              :programmingLanguage   schema/Str
                              })

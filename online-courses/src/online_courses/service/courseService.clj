@@ -3,6 +3,31 @@
             [toucan.db :as db]
             [ring.util.http-response :refer [ok not-found method-not-allowed request-timeout created]]))
 
-(defn getCourses []
+(defn id->created [id]
+  (created (str "/courses" id) {:id id}))
+
+(defn get-courses []
   (->> (db/select Course)
        ok))
+
+(defn course->response [course]
+  (if course
+    (ok course)
+    (not-found)))
+
+(defn get-course [course-id]
+  (-> (Course course-id)
+      course->response))
+
+(defn post-course [add-course]
+  (->> (db/insert! Course add-course)
+       :id
+       id->created))
+
+(defn put-course [id course-update]
+  (db/update! Course id course-update)
+  (ok course-update))
+
+(defn delete-course [id]
+  (db/delete! Course :id id)
+  (ok))
