@@ -9,7 +9,8 @@
                              :numberOfArticles      schema/Int
                              :numberOfExcercises    schema/Int
                              :accessOnMobileAndTv   schema/Bool
-                             :certificate           schema/Bool
+                             :certificateId         schema/Int
+                             :authorId              schema/Int
                              :review                schema/Str
-                             :programmingLanguage   schema/Str
+                             :programmingLanguageId schema/Int
                              })
