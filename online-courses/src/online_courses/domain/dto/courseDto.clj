@@ -5,7 +5,7 @@
 (schema/defschema CourseDto {
                              :courseName            schema/Str
                              :price                 schema/Num
-                             :time                  schema/Str
+                             :timeToComplete        schema/Str
                              :numberOfArticles      schema/Int
                              :numberOfExcercises    schema/Int
                              :accessOnMobileAndTv   schema/Bool

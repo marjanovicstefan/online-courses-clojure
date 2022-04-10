@@ -8,7 +8,9 @@
   [ring.middleware.cors :refer [wrap-cors]]
   [online-courses.controller.courseController :refer [course-routes]]
   [online-courses.controller.authorController :refer [author-routes]]
-  [online-courses.controller.userController :refer [user-routes]])
+  [online-courses.controller.userController :refer [user-routes]]
+  [online-courses.controller.certificateController :refer [certificate-routes]]
+  [online-courses.controller.programmingLanguageController :refer [programming-language-routes]])
   (:gen-class))
 
 (def db-conf
@@ -29,7 +31,8 @@
    })
 
 (def app
-  (-> (api {:swagger swagger-config} (apply routes course-routes author-routes user-routes))
+  (-> (api {:swagger swagger-config} (apply routes course-routes author-routes user-routes certificate-routes
+                                            programming-language-routes))
       (wrap-cors :access-control-allow-origin #"http://localhost:4200"
                  :access-control-allow-methods [:get :post :put :delete])))
 
@@ -40,4 +43,4 @@
   (db/set-default-quoting-style! :mysql)
   (models/set-root-namespace! `online_courses.domain.model)
   (run-jetty app {:port 3123})
-  (println "OnlineCourses is up!"))
+  (println "OnlineCourses app is running!"))
