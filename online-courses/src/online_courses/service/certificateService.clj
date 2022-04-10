@@ -10,9 +10,14 @@
   (->> (db/select Certificate)
        ok))
 
+(defn certificate-response [Certificate]
+  (if Certificate
+    (ok Certificate)
+    (not-found "Certificate not found")))
+
 (defn get-certificate [certificate-id]
   (-> (Certificate certificate-id)
-      ok))
+      certificate-response))
 
 (defn post-certificate [add-certificate]
   (->> (db/insert! Certificate add-certificate)
@@ -21,4 +26,4 @@
 
 (defn delete-certificate [id]
   (db/delete! Certificate :id id)
-  (ok))
+  (ok "Deleted successfully!"))

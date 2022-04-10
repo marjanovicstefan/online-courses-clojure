@@ -10,9 +10,14 @@
   (->> (db/select User)
        ok))
 
+(defn user-response [User]
+  (if User
+    (ok User)
+    (not-found "User not found")))
+
 (defn get-user [user-id]
   (-> (User user-id)
-      ok))
+      user-response))
 
 (defn post-user [add-user]
   (->> (db/insert! User add-user)
@@ -25,4 +30,4 @@
 
 (defn delete-user [id]
   (db/delete! User :id id)
-  (ok))
+  (ok "Deleted successfully!"))

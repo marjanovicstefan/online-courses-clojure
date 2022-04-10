@@ -10,9 +10,14 @@
   (->> (db/select Author)
        ok))
 
+(defn author-response [Author]
+  (if Author
+    (ok Author)
+    (not-found "Author not found")))
+
 (defn get-author [author-id]
   (-> (Author author-id)
-      ok))
+      author-response))
 
 (defn post-author [add-author]
   (->> (db/insert! Author add-author)
@@ -25,4 +30,4 @@
 
 (defn delete-author [id]
   (db/delete! Author :id id)
-  (ok))
+  (ok "Deleted successfully!"))

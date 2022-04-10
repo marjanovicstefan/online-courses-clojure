@@ -1,7 +1,7 @@
 (ns online-courses.service.programmingLanguageService
   (:require [online-courses.domain.model.programmingLanguage :refer [ProgrammingLanguage]]
             [toucan.db :as db]
-            [ring.util.http-response :refer [ok not-found method-not-allowed request-timeout created]]))
+            [ring.util.http-response :refer [ok not-found created]]))
 
 (defn id->created [id]
   (created (str "/programming-languages" id) {:id id}))
@@ -10,9 +10,14 @@
   (->> (db/select ProgrammingLanguage)
        ok))
 
+(defn programming-language-response [ProgrammingLanguage]
+  (if ProgrammingLanguage
+    (ok ProgrammingLanguage)
+    (not-found "Programming language not found")))
+
 (defn get-programming-language [programming-language-id]
   (-> (ProgrammingLanguage programming-language-id)
-      ok))
+      programming-language-response))
 
 (defn post-programming-language [add-programming-language]
   (->> (db/insert! ProgrammingLanguage add-programming-language)
@@ -25,4 +30,4 @@
 
 (defn delete-programming-language [id]
   (db/delete! ProgrammingLanguage :id id)
-  (ok))
+  (ok "Deleted successfully!"))
