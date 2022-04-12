@@ -17,10 +17,9 @@
    :subname     "//localhost:3306/onlineCourses"
    :user        "Marjan"
    :password    "1234"
-   :useSSL      false
    })
 
-(deftest find-all-authors-test
+(deftest get-authors-test
   (testing "All authors"
     (def authors (count ((authorService/get-authors) :body)))
     (authorService/post-author {
@@ -47,7 +46,7 @@
       (is (= "Author not found" ((authorService/get-author ((author :body) :id)) :body)))
       )))
 
-(deftest find-all-certificates-test
+(deftest get-certificates-test
   (testing "All certificates"
     (def certificates (count ((certificateService/get-certificates) :body)))
     (certificateService/post-certificate {
@@ -73,7 +72,7 @@
       (is (= "Certificate not found" ((certificateService/get-certificate ((certificate :body) :id)) :body)))
       )))
 
-(deftest find-all-programming-languages-test
+(deftest get-programming-languages-test
   (testing "All programming languages"
     (def programmingLanguages (count ((programmingLanguageService/get-programming-languages) :body)))
     (programmingLanguageService/post-programming-language
