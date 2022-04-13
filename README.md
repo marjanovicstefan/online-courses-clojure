@@ -35,6 +35,7 @@ ring-cors - Ring middleware for Cross-Origin Resource Sharing.
 Toucan - provides helper functions for querying the DB and inserting or updating records using Toucan models.
 
 For data storage, onlineCourses mysql database is created. Lines of code listed under are used for database configuration:
+
 :classname   "com.mysql.cj.jdbc.Driver"
 
 :subprotocol "mysql"
