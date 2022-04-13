@@ -36,9 +36,13 @@ Toucan - provides helper functions for querying the DB and inserting or updating
 
 For data storage, onlineCourses mysql database is created. Lines of code listed under are used for database configuration:
 :classname   "com.mysql.cj.jdbc.Driver"
+
 :subprotocol "mysql"
+
 :subname     "//localhost:3306/onlineCourses"
+
 :user        "Marjan"
+
 :password    "1234"
 
 Schema is used for describing data shapes, with features like: data validation, annotation...
