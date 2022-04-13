@@ -29,7 +29,9 @@ Typing lein test command in terminal wil run all the tests that are written.
 compojure-api provides a powerful and easy to use way to build web APIs declaratively. It is a API library.
 
 Ring is a Clojure web applications library inspired by Python's WSGI and Ruby's Rack. By abstracting the details of HTTP into a simple, unified API, Ring allows web applications to be constructed of modular components that can be shared among a variety of applications, web servers, and web frameworks.
+
 ring-jetty-adapter - a Ring adapter that uses the Jetty webserver.
+
 ring-cors - Ring middleware for Cross-Origin Resource Sharing.
 
 Toucan - provides helper functions for querying the DB and inserting or updating records using Toucan models.
