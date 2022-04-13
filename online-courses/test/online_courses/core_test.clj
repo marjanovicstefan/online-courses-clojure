@@ -3,9 +3,7 @@
             [online-courses.core :refer :all]
             [online-courses.service.authorService :as authorService]
             [online-courses.service.certificateService :as certificateService]
-            [online-courses.service.courseService :as courseService]
             [online-courses.service.programmingLanguageService :as programmingLanguageService]
-            [online-courses.service.userService :as userService]
             [toucan.db :as db]))
 
 (db/set-default-quoting-style! :mysql)
@@ -17,6 +15,7 @@
    :subname     "//localhost:3306/onlineCourses"
    :user        "Marjan"
    :password    "1234"
+   :useSSL      false
    })
 
 (deftest get-authors-test
