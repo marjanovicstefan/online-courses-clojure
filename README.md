@@ -16,6 +16,19 @@ This README file contains:
 Today, knowledge in the world of programming is highly valued and well paid. The age in which we live has already been called the "age of computers", so more and more people are being educated in the field of computer applications and programming in order to keep up with the times and technologies.
 It is necessary to develop a web application that will provide the services of Internet courses for learning programming. This application is a CRUD web application for online courses, written in the clojure programming language. The application contains several controllers, through which the user can read, enter, update and delete data from the database. 
 
+Relational model:
+
+Author(**Id**, firstName, lastName, job, dateOfBirth, about)
+
+Certificate(**Id**, certificateName, dateOfCertificate, signature, textField)
+
+ProgrammingLanguage(**Id**, name, levelOfLanguage, currentVersion)
+
+User(**Id**, firstName, lastName, dateOfBirth, userName, pw, creditCardNumber, roles)
+
+Course(**Id**, price, timeToComplete, numberOfArticles, numberOfExcercises, accessOnMobileAndTv, certificateId, authorId, review, programmingLanguageId)
+
+
 
 **How to run an application**
 
@@ -46,9 +59,11 @@ Typing **lein test** command in terminal wil run all the tests that are written.
 
 **Toucan** - provides helper functions for querying the DB and inserting or updating records using Toucan models.
 
-For data storage, **onlineCourses** mysql database is created. Lines of code listed under are used for database configuration:
+**Schema** is used for describing data shapes, with features like: data validation, annotation...
 
-:classname   "com.mysql.cj.jdbc.Driver"
+For data storage, **onlineCourses** mysql database is created. Lines of code listed under are used for database configuration (core.clj file):
+
+:classname   "com.mysql.cj.jdbc.Driver"	
 
 :subprotocol "mysql"
 
@@ -58,7 +73,6 @@ For data storage, **onlineCourses** mysql database is created. Lines of code lis
 
 :password    "1234"
 
-Schema is used for describing data shapes, with features like: data validation, annotation...
 
 
 **References**
