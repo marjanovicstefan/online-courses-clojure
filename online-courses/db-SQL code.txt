@@ -1,0 +1,66 @@
+CREATE TABLE author (
+    ID int NOT NULL,
+    firstName varchar(255) NOT NULL,
+    lastName varchar(255) NOT NULL,
+    job varchar(255) NOT NULL,
+    dateOfBirth date NOT NULL,
+    about varchar(255) NOT NULL,
+    PRIMARY KEY (ID)
+); 
+
+ALTER TABLE onlinecourses.author MODIFY COLUMN ID int(11) auto_increment NOT NULL;
+
+CREATE TABLE user (
+    ID int NOT NULL,
+    firstName varchar(255) NOT NULL,
+    lastName varchar(255) NOT NULL,
+    dateOfBirth date NOT NULL,
+    userName varchar(255) NOT NULL,
+    pw varchar(255) NOT null,
+    creditCardNumber varchar(255) NOT null,
+    roles varchar(255) NOT null,
+    PRIMARY KEY (ID)
+); 
+
+ALTER TABLE onlinecourses.user MODIFY COLUMN ID int(11) auto_increment NOT NULL;
+
+CREATE TABLE programmingLanguage (
+    ID int NOT NULL,
+    name varchar(255) NOT NULL,
+    levelOfLanguage varchar(255) NOT NULL,
+    currentVersion varchar(255) NOT NULL,
+    PRIMARY KEY (ID)
+); 
+
+ALTER TABLE onlinecourses.programmingLanguage MODIFY COLUMN ID int(11) auto_increment NOT NULL;
+
+CREATE TABLE certificate (
+    ID int NOT NULL,
+    certificateName varchar(255) NOT NULL,
+    dateOfCertificate date NOT NULL,
+    signature varchar(255) NOT NULL,
+    textField varchar(255) NOT NULL,
+    PRIMARY KEY (ID)
+); 
+
+ALTER TABLE onlinecourses.certificate MODIFY COLUMN ID int(11) auto_increment NOT NULL;
+
+CREATE TABLE course (
+    ID int NOT NULL,
+    courseName varchar(255) NOT NULL,
+    price Double NOT NULL,
+    timeToComplete varchar(255) NOT NULL,
+    numberOfArticles int NOT NULL,
+    numberOfExcercises int NOT NULL,
+    accessOnMobileAndTv BOOLEAN NOT NULL,
+    certificateId int NULL,
+    authorId int NOT NULL,
+    review varchar(255) NOT NULL,
+    programmingLanguageId int NOT NULL,
+    PRIMARY KEY (ID),
+    FOREIGN KEY (certificateId) REFERENCES certificate(ID),
+    FOREIGN KEY (programmingLanguageId) REFERENCES programmingLanguage(ID),
+    FOREIGN KEY (authorId) REFERENCES author(ID)
+); 
+
+ALTER TABLE onlinecourses.course MODIFY COLUMN ID int(11) auto_increment NOT NULL;
