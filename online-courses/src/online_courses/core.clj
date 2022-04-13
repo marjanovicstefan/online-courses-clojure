@@ -19,7 +19,6 @@
    :subname     "//localhost:3306/onlineCourses"
    :user        "Marjan"
    :password    "1234"
-   :useSSL      false
    })
 
 (def swagger-config
